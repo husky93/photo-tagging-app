@@ -1,4 +1,4 @@
-import { getByRole, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Homepage from '../Homepage';
 import '@testing-library/jest-dom';
 
