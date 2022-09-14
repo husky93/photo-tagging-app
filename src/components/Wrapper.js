@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   ${(props) => (props.align ? `align-items: ${props.align};` : '')}
   ${(props) => (props.justify ? `justify-content: ${props.justify};` : '')}
   ${(props) => (props.wrap ? 'flex-wrap: wrap;' : '')}
+  ${(props) => (props.gap ? `gap: ${props.gap}px;` : '')}
 `;
 
 Wrapper.propTypes = {
@@ -36,7 +37,8 @@ Wrapper.propTypes = {
     'revert-layer',
     'unset',
   ]),
-  wrap: PropTypes.any,
+  wrap: PropTypes.bool,
+  gap: PropTypes.number,
 };
 
 export default Wrapper;
