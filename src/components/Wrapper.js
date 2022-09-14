@@ -6,15 +6,12 @@ const Wrapper = styled.div`
   flex-direction: ${(props) => props.direction};
   ${(props) => (props.align ? `align-items: ${props.align};` : '')}
   ${(props) => (props.justify ? `justify-content: ${props.justify};` : '')}
+  ${(props) => (props.wrap ? 'flex-wrap: wrap;' : '')}
 `;
 
 Wrapper.propTypes = {
-  direction: PropTypes.oneOf([
-    'column',
-    'row',
-    'row-reverse',
-    'column-reverse',
-  ]),
+  direction: PropTypes.oneOf(['column', 'row', 'row-reverse', 'column-reverse'])
+    .isRequired,
   align: PropTypes.oneOf([
     'center',
     'flex-start',
@@ -39,6 +36,7 @@ Wrapper.propTypes = {
     'revert-layer',
     'unset',
   ]),
+  wrap: PropTypes.any,
 };
 
 export default Wrapper;
