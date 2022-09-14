@@ -4,11 +4,11 @@ import RouteSwitch from './RouteSwitch';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 const theme = {
-  bgColor: '#FEF5EF',
-  primaryColor: '#C1292E',
-  secondaryColor: '#235789',
-  tertiaryColor: '#E4BB97',
-  lightColor: '#D6E3F8',
+  bgColor: '#F9F8F8',
+  primaryColor: '#71B48D',
+  secondaryColor: '#DE9151',
+  darkColor: '#3E505B',
+  lightColor: '#F5F0F6',
 };
 
 const GlobalStyle = createGlobalStyle`
@@ -17,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   body {
+    margin: 0;
     background-color: ${(props) => props.theme.bgColor};
   }
 `;
