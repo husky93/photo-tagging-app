@@ -1,6 +1,7 @@
-import Spinner from '../../components/Spinner';
 import { useEffect, useState } from 'react';
 import { importImage, loadImages } from '../../modules/images';
+import Spinner from '../../components/Spinner';
+import LevelPicker from './components/LevelPicker';
 
 function Homepage() {
   const [images, setImages] = useState(null);
@@ -17,9 +18,16 @@ function Homepage() {
     <main className="homepage">
       {images !== null ? (
         <section className="content" aria-label="Content">
-          {images.map((src) => (
-            <img src={src} alt="yo" key={src} />
-          ))}
+          <div>
+            {images.map((imgSrc, index) => (
+              <LevelPicker
+                imgSrc={imgSrc}
+                text={`Level ${index + 1}`}
+                path={`/level-${index + 1}`}
+                key={`homepage-card-${index}`}
+              />
+            ))}
+          </div>
         </section>
       ) : (
         <Spinner />
