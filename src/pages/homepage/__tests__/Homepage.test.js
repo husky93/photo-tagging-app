@@ -1,8 +1,17 @@
 import { render, screen, act, waitFor } from '@testing-library/react';
 import Homepage from '../Homepage';
+import React from 'react';
 import '@testing-library/jest-dom';
 
-describe('App', () => {
+jest.mock('../../../components/Header', () => () => {
+  return <header data-testid="header"></header>;
+});
+
+jest.mock('../components/LevelPicker', () => () => {
+  return <div data-testid="levelpicker"></div>;
+});
+
+describe('Homepage', () => {
   it('renders', async () => {
     await act(async () => render(<Homepage />));
     const main = screen.getByRole('main');

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { importImage, loadImages } from '../../modules/images';
+import Header from '../../components/Header';
 import Wrapper from '../../components/Wrapper';
 import Spinner from '../../components/Spinner';
 import LevelPicker from './components/LevelPicker';
@@ -17,9 +18,10 @@ function Homepage() {
   }, [images]);
   return (
     <main className="homepage">
+      <Header />
       {images !== null ? (
         <section className="content" aria-label="Content">
-          <Wrapper direction="row" gap={36} wrap>
+          <Wrapper direction="row" gap={36} $wrap>
             {images.map((imgSrc, index) => (
               <LevelPicker
                 imgSrc={imgSrc}
