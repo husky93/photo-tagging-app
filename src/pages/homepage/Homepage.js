@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { importImage, loadImages } from '../../modules/images';
+import imagesLoader from '../../modules/imagesLoader';
 import Header from '../../components/Header';
 import Wrapper from '../../components/Wrapper';
 import Spinner from '../../components/Spinner';
@@ -9,11 +9,13 @@ function Homepage() {
   const [images, setImages] = useState(null);
   useEffect(() => {
     if (images === null) {
-      loadImages([
-        importImage('level-one-sm.jpg'),
-        importImage('level-two-sm.jpg'),
-        importImage('level-three-sm.jpg'),
-      ]).then((value) => setImages(value));
+      imagesLoader
+        .loadImages([
+          imagesLoader.importImage('level-one-sm.jpg'),
+          imagesLoader.importImage('level-two-sm.jpg'),
+          imagesLoader.importImage('level-three-sm.jpg'),
+        ])
+        .then((value) => setImages(value));
     }
   }, [images]);
   return (

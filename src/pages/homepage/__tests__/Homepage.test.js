@@ -1,6 +1,7 @@
-import { render, screen, act, waitFor } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import Homepage from '../Homepage';
 import React from 'react';
+import imagesLoader from '../../../modules/imagesLoader';
 import '@testing-library/jest-dom';
 
 jest.mock('../../../components/Header', () => () => {
@@ -21,12 +22,14 @@ describe('Homepage', () => {
     render(<Homepage />);
     const spinner = screen.getByTitle('Loading');
     expect(spinner).toBeInTheDocument();
-    await waitFor(async () => {
-      expect(await screen.findByRole('region')).toBeInTheDocument();
-    });
   });
   it('renders content when images load', async () => {
+    const imagesLoaderGetSpy = jest
+      .spyOn(imagesLoader, 'loadImages')
+      .mockResolvedValueOnce(['test.jpg']);
     await act(async () => render(<Homepage />));
+
+    expect(imagesLoaderGetSpy).toBeCalled();
     const section = await screen.findByRole('region');
     expect(section).toBeInTheDocument();
   });
