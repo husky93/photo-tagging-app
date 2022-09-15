@@ -8,6 +8,7 @@ import Spinner from '../../components/Spinner';
 import CustomCursor from './components/CustomCursor';
 import Popup from './components/Popup';
 import ChoiceFeedback from './components/ChoiceFeedback';
+import Timer from './components/Timer';
 
 const Image = styled.img`
   cursor: ${(props) => (props.clicked ? 'pointer' : 'none')};
@@ -53,12 +54,14 @@ const Game = () => {
   };
 
   const handleImageClick = () => {
-    setClicked((prevValue) => !prevValue);
+    if (!showFeedback) {
+      setClicked((prevValue) => !prevValue);
+    }
   };
 
   const handlePopupItemClick = (event) => {
     const charName = event.target.dataset.name;
-    if (charName) {
+    if (charName && !showFeedback) {
       const clickedCharacter = characters.find(
         (char) => char.name === charName
       );
@@ -77,9 +80,9 @@ const Game = () => {
           else setIsGameOver(true);
         } else setShowFeedback({ mouseX: mouseX, mouseY: mouseY });
       } else setShowFeedback({ mouseX: mouseX, mouseY: mouseY });
+      setClicked((prevValue) => !prevValue);
+      setTimeout(() => setShowFeedback(null), 2000);
     }
-    setClicked((prevValue) => !prevValue);
-    setTimeout(() => setShowFeedback(null), 2000);
   };
 
   const renderGame = () => {
@@ -112,7 +115,9 @@ const Game = () => {
 
   return (
     <main>
-      <Header />
+      <Header>
+        <Timer />
+      </Header>
       {hovered ? (
         <CustomCursor
           mouseX={mouseX}
