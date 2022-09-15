@@ -3,12 +3,17 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import imagesLoader from '../../modules/imagesLoader';
 import Header from '../../components/Header';
+import Wrapper from '../../components/Wrapper';
 import Spinner from '../../components/Spinner';
 import CustomCursor from './components/CustomCursor';
 import Popup from './components/Popup';
+import ChoiceFeedback from './components/ChoiceFeedback';
 
 const Image = styled.img`
   cursor: ${(props) => (props.clicked ? 'pointer' : 'none')};
+  overflow: visible;
+  width: 1920px;
+  height: 1080px;
   position: relative;
 `;
 
@@ -24,6 +29,7 @@ const Game = () => {
     { name: 'Wizard', found: false, coords: { x: 3, y: 3 } },
   ]);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [showFeedback, setShowFeedback] = useState(null);
   const params = useParams();
 
   useEffect(() => {
@@ -58,6 +64,7 @@ const Game = () => {
       );
       const x = clickedCharacter.coords.x;
       const y = clickedCharacter.coords.y;
+      // Check if user clicked on the right area.
       const checkXAxis = x >= mouseX - 40 && x <= mouseX + 40;
       if (checkXAxis) {
         const checkYAxis = y >= mouseY - 40 && y <= mouseY + 40;
@@ -65,29 +72,42 @@ const Game = () => {
           const newCharactersArray = characters.filter(
             (char) => char.name !== charName
           );
+          setShowFeedback({ name: charName, mouseX: mouseX, mouseY: mouseY });
           if (newCharactersArray.length > 0) setCharacters(newCharactersArray);
           else setIsGameOver(true);
-        }
-      }
+        } else setShowFeedback({ mouseX: mouseX, mouseY: mouseY });
+      } else setShowFeedback({ mouseX: mouseX, mouseY: mouseY });
     }
-
     setClicked((prevValue) => !prevValue);
+    setTimeout(() => setShowFeedback(null), 2000);
   };
 
   const renderGame = () => {
-    if (params.id > 3) return <h2>Error 404! Page not found</h2>;
+    if (params.id > 3)
+      return (
+        <Wrapper direction="row" justify="center" align="center">
+          <h2>Error 404! Page not found</h2>
+        </Wrapper>
+      );
     else if (image !== null)
       return (
-        <Image
-          clicked={clicked}
-          src={image}
-          alt="Game board"
-          onMouseMove={handleImageHover}
-          onMouseLeave={handleImageHoverLeave}
-          onClick={handleImageClick}
-        />
+        <div>
+          <Image
+            clicked={clicked}
+            src={image}
+            alt="Game board"
+            onMouseMove={handleImageHover}
+            onMouseLeave={handleImageHoverLeave}
+            onClick={handleImageClick}
+          />
+        </div>
       );
-    else return <Spinner />;
+    else
+      return (
+        <Wrapper direction="row" justify="center" align="center">
+          <Spinner />
+        </Wrapper>
+      );
   };
 
   return (
@@ -108,6 +128,15 @@ const Game = () => {
           mouseY={mouseY}
           characters={characters}
           handleClick={handlePopupItemClick}
+        />
+      ) : (
+        ''
+      )}
+      {showFeedback ? (
+        <ChoiceFeedback
+          mouseX={showFeedback.mouseX}
+          mouseY={showFeedback.mouseY}
+          $name={showFeedback.name ? showFeedback.name : false}
         />
       ) : (
         ''
