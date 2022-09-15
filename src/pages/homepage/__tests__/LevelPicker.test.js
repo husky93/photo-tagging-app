@@ -1,8 +1,9 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import LevelPicker from '../components/LevelPicker';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+import imagesLoader from '../../../modules/imagesLoader';
 
 describe('LevelPicker', () => {
   it('renders', () => {
@@ -34,5 +35,24 @@ describe('LevelPicker', () => {
     userEvent.click(figure);
     const newPath = window.location.pathname;
     expect(newPath).toBe(`${path}level-one`);
+  });
+  it('has an image for each character', async () => {
+    const imagesLoaderGetSpy = jest
+      .spyOn(imagesLoader, 'loadImages')
+      .mockResolvedValueOnce(['waldo.png', 'odlaw.png', 'wizard.png']);
+    await act(async () =>
+      render(
+        <Router>
+          <LevelPicker imgSrc="test.jpg" text="Level One" path="level-one" />
+        </Router>
+      )
+    );
+    expect(imagesLoaderGetSpy).toBeCalled();
+    const waldo = screen.getByRole('img', { name: /waldo/i });
+    const odlaw = screen.getByRole('img', { name: /odlaw/i });
+    const wizard = screen.getByRole('img', { name: /wizard/i });
+    expect(waldo).toBeInTheDocument();
+    expect(odlaw).toBeInTheDocument();
+    expect(wizard).toBeInTheDocument();
   });
 });

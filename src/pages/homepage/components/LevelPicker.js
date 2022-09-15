@@ -1,6 +1,9 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import imagesLoader from '../../../modules/imagesLoader';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Wrapper from '../../../components/Wrapper';
 
 const Figure = styled.figure`
   margin: 0;
@@ -33,12 +36,43 @@ const StyledLink = styled(Link)`
   color: ${(props) => props.theme.darkColor};
 `;
 
+const Character = styled.img`
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+`;
+
 const LevelPicker = ({ imgSrc, text, path }) => {
+  const [images, setImages] = useState(null);
+
+  useEffect(() => {
+    if (images === null) {
+      imagesLoader
+        .loadImages([
+          imagesLoader.importImage('waldo.png'),
+          imagesLoader.importImage('odlaw.png'),
+          imagesLoader.importImage('wizard.png'),
+        ])
+        .then((value) => setImages(value));
+    }
+  }, [images]);
+
   return (
     <StyledLink to={path}>
       <Figure>
         <Image src={imgSrc} alt={text} />
-        <Caption>{text}</Caption>
+        <Wrapper direction="row" justify="space-between">
+          <Caption>{text}</Caption>
+          {images !== null ? (
+            <Wrapper direction="row" gap={4} align="center">
+              <Character alt="Waldo" src={images[0]} />
+              <Character alt="Odlaw" src={images[1]} />
+              <Character alt="Wizard" src={images[2]} />
+            </Wrapper>
+          ) : (
+            ''
+          )}
+        </Wrapper>
       </Figure>
     </StyledLink>
   );
