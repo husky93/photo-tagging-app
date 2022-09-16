@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import imagesLoader from '../../modules/imagesLoader';
@@ -10,6 +10,7 @@ import Popup from './components/Popup';
 import ChoiceFeedback from './components/ChoiceFeedback';
 import Timer from './components/Timer';
 import Characters from './components/Characters';
+import Modal from './components/Modal';
 
 const Image = styled.img`
   cursor: ${(props) => (props.clicked ? 'pointer' : 'none')};
@@ -17,6 +18,11 @@ const Image = styled.img`
   width: 1920px;
   height: 1080px;
   position: relative;
+`;
+
+const Main = styled.main`
+  position: relative;
+  width: min-content;
 `;
 
 const Game = () => {
@@ -32,7 +38,9 @@ const Game = () => {
   ]);
   const [isGameOver, setIsGameOver] = useState(false);
   const [showFeedback, setShowFeedback] = useState(null);
+  const [time, setTime] = useState('0:00');
   const params = useParams();
+  const timerRef = useRef();
 
   useEffect(() => {
     if (image === null && params.id <= 3) {
@@ -78,7 +86,10 @@ const Game = () => {
           );
           setShowFeedback({ name: charName, mouseX: mouseX, mouseY: mouseY });
           setCharacters(newCharactersArray);
-          if (newCharactersArray.length === 0) setIsGameOver(true);
+          if (newCharactersArray.length === 0) {
+            setIsGameOver(true);
+            setTime(timerRef.current.getTimer());
+          }
         } else setShowFeedback({ mouseX: mouseX, mouseY: mouseY });
       } else setShowFeedback({ mouseX: mouseX, mouseY: mouseY });
       setClicked((prevValue) => !prevValue);
@@ -115,9 +126,10 @@ const Game = () => {
   };
 
   return (
-    <main>
+    <Main>
+      {isGameOver ? <Modal time={time} /> : ''}
       <Header>
-        <Timer stop={isGameOver} />
+        <Timer ref={timerRef} stop={isGameOver} />
         <Characters characters={characters} />
       </Header>
       {hovered ? (
@@ -149,7 +161,7 @@ const Game = () => {
         ''
       )}
       {renderGame()}
-    </main>
+    </Main>
   );
 };
 
