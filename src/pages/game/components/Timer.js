@@ -1,7 +1,17 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useImperativeHandle } from 'react';
+import PropTypes from 'prop-types';
 
-const Timer = ({ stop }) => {
+const Timer = React.forwardRef(({ stop }, ref) => {
   const [timer, setTimer] = useState('0:00');
+  useImperativeHandle(
+    ref,
+    () => ({
+      getTimer: () => {
+        return timer;
+      },
+    }),
+    [timer]
+  );
   let intervalId;
   useEffect(() => {
     const date = new Date();
@@ -17,6 +27,10 @@ const Timer = ({ stop }) => {
     return () => clearInterval(intervalId);
   }, [stop]);
   return <div>{timer}</div>;
+});
+
+Timer.propTypes = {
+  stop: PropTypes.bool.isRequired,
 };
 
 export default Timer;
