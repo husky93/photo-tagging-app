@@ -9,6 +9,7 @@ import CustomCursor from './components/CustomCursor';
 import Popup from './components/Popup';
 import ChoiceFeedback from './components/ChoiceFeedback';
 import Timer from './components/Timer';
+import Characters from './components/Characters';
 
 const Image = styled.img`
   cursor: ${(props) => (props.clicked ? 'pointer' : 'none')};
@@ -117,6 +118,7 @@ const Game = () => {
     <main>
       <Header>
         <Timer />
+        <Characters characters={characters} />
       </Header>
       {hovered ? (
         <CustomCursor
