@@ -1,23 +1,16 @@
-import { useEffect, useState } from 'react';
-import imagesLoader from '../../modules/imagesLoader';
+import useImageLoader from '../../hooks/useImageLoader';
 import Header from '../../components/Header';
 import Wrapper from '../../components/Wrapper';
 import Spinner from '../../components/Spinner';
 import LevelPicker from './components/LevelPicker';
 
 function Homepage() {
-  const [images, setImages] = useState(null);
-  useEffect(() => {
-    if (images === null) {
-      imagesLoader
-        .loadImages([
-          imagesLoader.importImage('level-one-sm.jpg'),
-          imagesLoader.importImage('level-two-sm.jpg'),
-          imagesLoader.importImage('level-three-sm.jpg'),
-        ])
-        .then((value) => setImages(value));
-    }
-  }, [images]);
+  const images = useImageLoader([
+    'level-one-sm.jpg',
+    'level-two-sm.jpg',
+    'level-three-sm.jpg',
+  ]);
+
   return (
     <main className="homepage">
       <Header />

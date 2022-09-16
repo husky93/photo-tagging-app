@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import useImageLoader from '../../../hooks/useImageLoader';
 import { Link } from 'react-router-dom';
 import imagesLoader from '../../../modules/imagesLoader';
 import PropTypes from 'prop-types';
@@ -43,20 +43,7 @@ const Character = styled.img`
 `;
 
 const LevelPicker = ({ imgSrc, text, path }) => {
-  const [images, setImages] = useState(null);
-
-  useEffect(() => {
-    if (images === null) {
-      imagesLoader
-        .loadImages([
-          imagesLoader.importImage('waldo.png'),
-          imagesLoader.importImage('odlaw.png'),
-          imagesLoader.importImage('wizard.png'),
-        ])
-        .then((value) => setImages(value));
-    }
-  }, [images]);
-
+  const images = useImageLoader(['waldo.png', 'odlaw.png', 'wizard.png']);
   return (
     <StyledLink to={path}>
       <Figure>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import imagesLoader from '../../../modules/imagesLoader';
+import useImageLoader from '../../../hooks/useImageLoader';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Wrapper from '../../../components/Wrapper';
@@ -12,7 +12,7 @@ const Image = styled.img`
 `;
 
 const Characters = ({ characters }) => {
-  const [images, setImages] = useState(null);
+  const images = useImageLoader(['waldo.png', 'odlaw.png', 'wizard.png']);
   const [isFound, setIsFound] = useState({
     waldo: false,
     oldaw: false,
@@ -20,15 +20,6 @@ const Characters = ({ characters }) => {
   });
 
   useEffect(() => {
-    if (images === null) {
-      imagesLoader
-        .loadImages([
-          imagesLoader.importImage('waldo.png'),
-          imagesLoader.importImage('odlaw.png'),
-          imagesLoader.importImage('wizard.png'),
-        ])
-        .then((value) => setImages(value));
-    }
     const isWaldoFound =
       characters.find((char) => char.name === 'Waldo') === undefined;
     const isOdlawFound =
@@ -41,7 +32,7 @@ const Characters = ({ characters }) => {
       odlaw: isOdlawFound,
       wizard: isWizardFound,
     });
-  }, [images, characters]);
+  }, [characters]);
 
   return (
     <div>
