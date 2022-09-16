@@ -27,8 +27,8 @@ const Game = () => {
   const [mouseY, setMouseY] = useState(0);
   const [characters, setCharacters] = useState([
     { name: 'Waldo', found: false, coords: { x: 656, y: 506 } },
-    { name: 'Odlaw', found: false, coords: { x: 3, y: 3 } },
-    { name: 'Wizard', found: false, coords: { x: 3, y: 3 } },
+    { name: 'Odlaw', found: false, coords: { x: 656, y: 506 } },
+    { name: 'Wizard', found: false, coords: { x: 656, y: 506 } },
   ]);
   const [isGameOver, setIsGameOver] = useState(false);
   const [showFeedback, setShowFeedback] = useState(null);
@@ -55,14 +55,14 @@ const Game = () => {
   };
 
   const handleImageClick = () => {
-    if (!showFeedback) {
+    if (!showFeedback && !isGameOver) {
       setClicked((prevValue) => !prevValue);
     }
   };
 
   const handlePopupItemClick = (event) => {
     const charName = event.target.dataset.name;
-    if (charName && !showFeedback) {
+    if (charName && !showFeedback && !isGameOver) {
       const clickedCharacter = characters.find(
         (char) => char.name === charName
       );
@@ -77,8 +77,8 @@ const Game = () => {
             (char) => char.name !== charName
           );
           setShowFeedback({ name: charName, mouseX: mouseX, mouseY: mouseY });
-          if (newCharactersArray.length > 0) setCharacters(newCharactersArray);
-          else setIsGameOver(true);
+          setCharacters(newCharactersArray);
+          if (newCharactersArray.length === 0) setIsGameOver(true);
         } else setShowFeedback({ mouseX: mouseX, mouseY: mouseY });
       } else setShowFeedback({ mouseX: mouseX, mouseY: mouseY });
       setClicked((prevValue) => !prevValue);
@@ -117,7 +117,7 @@ const Game = () => {
   return (
     <main>
       <Header>
-        <Timer />
+        <Timer stop={isGameOver} />
         <Characters characters={characters} />
       </Header>
       {hovered ? (
