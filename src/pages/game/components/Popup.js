@@ -9,7 +9,7 @@ const StyledPopup = styled.div`
   background-color: #fff;
   left: ${(props) => props.mouseX}px;
   top: ${(props) => props.mouseY}px;
-  z-index: 999;
+  z-index: 600;
 `;
 
 const Popup = ({ mouseX, mouseY, characters, handleClick }) => {

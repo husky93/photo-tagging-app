@@ -27,7 +27,7 @@ const Feedback = styled.div`
   top: ${(props) => props.mouseY}px;
   transition: all 0.25s ease;
   animation: ${animate} 2s;
-  z-index: 900;
+  z-index: 550;
 `;
 
 const ChoiceFeedback = ({ mouseX, mouseY, $name }) => {

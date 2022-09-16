@@ -14,6 +14,7 @@ const Cursor = styled.div.attrs((props) => ({
   background: rgba(1, 1, 1, 0.5);
   z-index: 500;
   pointer-events: none;
+  border-radius: 50%;
 `;
 
 const CustomCursor = ({ mouseX, mouseY }) => {
