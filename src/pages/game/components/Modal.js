@@ -26,7 +26,7 @@ const StyledModal = styled(Wrapper)`
   border-radius: 8px;
 `;
 
-const Modal = ({ time }) => {
+const Modal = ({ time, submitScore }) => {
   const [visible, setVisible] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [inputValue, setInputValue] = useState('');
@@ -43,8 +43,7 @@ const Modal = ({ time }) => {
   const handleSubmit = async (event) => {
     if (inputValue) {
       setSubmitting(true);
-      await new Promise((resolve) => setTimeout(() => resolve(), 2000));
-      console.log('Submit! - Intedration with backend TODO');
+      await submitScore(inputValue, time);
       navigate('/highscores');
     }
   };
@@ -83,6 +82,7 @@ const Modal = ({ time }) => {
 
 Modal.propTypes = {
   time: PropTypes.string.isRequired,
+  submitScore: PropTypes.func.isRequired,
 };
 
 export default Modal;

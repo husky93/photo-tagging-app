@@ -2,7 +2,13 @@ import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import firebaseConfig from '../../firebase.config';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDoc, doc } from 'firebase/firestore/lite';
+import {
+  getFirestore,
+  getDoc,
+  updateDoc,
+  arrayUnion,
+  doc,
+} from 'firebase/firestore/lite';
 import styled from 'styled-components';
 import imagesLoader from '../../modules/imagesLoader';
 import Header from '../../components/Header';
@@ -60,6 +66,14 @@ const Game = () => {
     const levelRef = doc(db, 'levels-data', level);
     const levelSnapshot = await getDoc(levelRef);
     return levelSnapshot.data()[lowerCaseName];
+  };
+
+  const setHighscore = async (name, time) => {
+    const level = params.id;
+    const levelRef = doc(db, 'scorelist', level);
+    await updateDoc(levelRef, {
+      users: arrayUnion({ name, time }),
+    });
   };
 
   const handleImageHover = (event) => {
@@ -137,7 +151,7 @@ const Game = () => {
 
   return (
     <Main>
-      {isGameOver ? <Modal time={time} /> : ''}
+      {isGameOver ? <Modal time={time} submitScore={setHighscore} /> : ''}
       <Header>
         <Timer ref={timerRef} stop={isGameOver} />
         <Characters characters={characters} />
