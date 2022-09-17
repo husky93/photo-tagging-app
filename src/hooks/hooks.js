@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import imagesLoader from '../modules/imagesLoader';
 
-const useImageLoader = (imageArray) => {
+export const useImageLoader = (imageArray) => {
   const [images, setImages] = useState(null);
   useEffect(() => {
     if (images === null) {
@@ -13,5 +13,3 @@ const useImageLoader = (imageArray) => {
 
   return images;
 };
-
-export default useImageLoader;

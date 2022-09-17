@@ -6,9 +6,8 @@ const mProps = {
   characters: [{ name: 'Waldo' }, { name: 'Wizard' }],
 };
 
-jest.mock('../../../hooks/useImageLoader', () => ({
-  __esModule: true,
-  default: () => ['waldo.png', 'test.png', 'test2.png'],
+jest.mock('../../../hooks/hooks', () => ({
+  useImageLoader: () => ['waldo.png', 'test.png', 'test2.png'],
 }));
 
 describe('Characters', () => {

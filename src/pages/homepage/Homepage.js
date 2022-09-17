@@ -1,4 +1,4 @@
-import useImageLoader from '../../hooks/useImageLoader';
+import { useImageLoader } from '../../hooks/hooks';
 import Header from '../../components/Header';
 import Wrapper from '../../components/Wrapper';
 import Spinner from '../../components/Spinner';

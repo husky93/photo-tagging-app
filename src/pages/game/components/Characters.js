@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import useImageLoader from '../../../hooks/useImageLoader';
+import { useImageLoader } from '../../../hooks/hooks';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Wrapper from '../../../components/Wrapper';

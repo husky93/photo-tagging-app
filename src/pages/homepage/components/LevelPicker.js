@@ -1,6 +1,5 @@
-import useImageLoader from '../../../hooks/useImageLoader';
+import { useImageLoader } from '../../../hooks/hooks';
 import { Link } from 'react-router-dom';
-import imagesLoader from '../../../modules/imagesLoader';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Wrapper from '../../../components/Wrapper';
