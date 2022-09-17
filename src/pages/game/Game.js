@@ -1,5 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
+import firebaseConfig from '../../firebase.config';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, getDoc, doc } from 'firebase/firestore/lite';
 import styled from 'styled-components';
 import imagesLoader from '../../modules/imagesLoader';
 import Header from '../../components/Header';
@@ -32,15 +35,17 @@ const Game = () => {
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
   const [characters, setCharacters] = useState([
-    { name: 'Waldo', found: false, coords: { x: 656, y: 506 } },
-    { name: 'Odlaw', found: false, coords: { x: 656, y: 506 } },
-    { name: 'Wizard', found: false, coords: { x: 656, y: 506 } },
+    { name: 'Waldo', found: false },
+    { name: 'Odlaw', found: false },
+    { name: 'Wizard', found: false },
   ]);
   const [isGameOver, setIsGameOver] = useState(false);
   const [showFeedback, setShowFeedback] = useState(null);
   const [time, setTime] = useState('0:00');
   const params = useParams();
   const timerRef = useRef();
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
   useEffect(() => {
     if (image === null && params.id <= 3) {
@@ -49,6 +54,13 @@ const Game = () => {
         .then((value) => setImage(value[0]));
     }
   }, [image, params]);
+
+  const getCoordsFromDatabase = async (level, name) => {
+    const lowerCaseName = name.toLowerCase();
+    const levelRef = doc(db, 'levels-data', level);
+    const levelSnapshot = await getDoc(levelRef);
+    return levelSnapshot.data()[lowerCaseName];
+  };
 
   const handleImageHover = (event) => {
     if (!hovered && !clicked) setHovered(true);
@@ -68,14 +80,12 @@ const Game = () => {
     }
   };
 
-  const handlePopupItemClick = (event) => {
+  const handlePopupItemClick = async (event) => {
     const charName = event.target.dataset.name;
     if (charName && !showFeedback && !isGameOver) {
-      const clickedCharacter = characters.find(
-        (char) => char.name === charName
-      );
-      const x = clickedCharacter.coords.x;
-      const y = clickedCharacter.coords.y;
+      const coords = await getCoordsFromDatabase(params.id, charName);
+      const x = coords.x;
+      const y = coords.y;
       // Check if user clicked on the right area.
       const checkXAxis = x >= mouseX - 40 && x <= mouseX + 40;
       if (checkXAxis) {
