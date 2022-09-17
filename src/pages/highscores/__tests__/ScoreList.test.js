@@ -3,7 +3,8 @@ import ScoreList from '../components/ScoreList';
 import '@testing-library/jest-dom/';
 
 jest.mock('../components/ScoreItem', () => ({
-  ScoreItem: (props) => <li data-testid="listitem">{props.score}</li>,
+  __esModule: true,
+  default: (props) => <li data-testid="listitem">{props.time}</li>,
 }));
 
 const mProps = {
