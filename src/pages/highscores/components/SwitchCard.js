@@ -30,8 +30,8 @@ const Caption = styled.figcaption`
 const SwitchCard = ({ imgSrc, text, handleClick, id }) => {
   return (
     <Figure onClick={handleClick} data-id={id}>
-      <Image src={imgSrc} alt={text} />
-      <Caption>{text}</Caption>
+      <Image src={imgSrc} alt={text} data-id={id} />
+      <Caption data-id={id}>{text}</Caption>
     </Figure>
   );
 };

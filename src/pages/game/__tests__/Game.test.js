@@ -4,6 +4,9 @@ import imagesLoader from '../../../modules/imagesLoader';
 import Game from '../Game';
 import '@testing-library/jest-dom';
 
+jest.mock('firebase/app');
+jest.mock('firebase/firestore/lite');
+
 jest.mock('../../../components/Header', () => () => {
   return <header data-testid="header"></header>;
 });

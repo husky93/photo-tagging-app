@@ -1,7 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import firebaseConfig from '../../firebase.config';
-import { initializeApp } from 'firebase/app';
 import {
   getFirestore,
   getDoc,
@@ -34,7 +32,7 @@ const Main = styled.main`
   width: min-content;
 `;
 
-const Game = () => {
+const Game = ({ firebaseApp }) => {
   const [image, setImage] = useState(null);
   const [hovered, setHovered] = useState(false);
   const [clicked, setClicked] = useState(false);
@@ -50,8 +48,7 @@ const Game = () => {
   const [time, setTime] = useState('0:00');
   const params = useParams();
   const timerRef = useRef();
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+  const db = getFirestore(firebaseApp);
 
   useEffect(() => {
     if (image === null && params.id <= 3) {

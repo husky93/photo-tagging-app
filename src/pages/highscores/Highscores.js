@@ -1,25 +1,26 @@
 import Header from '../../components/Header';
 import LevelSwitch from './components/LevelSwitch';
 import ScoreList from './components/ScoreList';
-import { useImageLoader } from '../../hooks/hooks';
+import { getFirestore, getDoc, doc } from 'firebase/firestore/lite';
 import { useEffect, useState } from 'react';
 
-const Highscores = () => {
-  const images = useImageLoader([
-    'level-one-sm.jpg',
-    'level-two-sm.jpg',
-    'level-three-sm.jpg',
-  ]);
+const Highscores = ({ firebaseApp, fetchData }) => {
   const [data, setData] = useState([]);
-  useEffect(() => {
-    setData([
-      { name: 'test', time: '0:54' },
-      { name: 'test', time: '0:02' },
-      { name: 'test', time: '3:02' },
-    ]);
-  }, []);
+  const [level, setLevel] = useState('1');
+  const db = getFirestore(firebaseApp);
 
-  const handleLevelSwitch = () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      const levelRef = doc(db, 'scorelist', level);
+      const levelSnapshot = await getDoc(levelRef);
+      setData(levelSnapshot.data().users);
+    };
+    fetchData();
+  }, [level]);
+
+  const handleLevelSwitch = (e) => {
+    console.log(e.target.dataset.id);
+    setLevel(e.target.dataset.id);
     console.log('Fetch new data from backend');
   };
 

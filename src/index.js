@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import RouteSwitch from './RouteSwitch';
+import firebaseConfig from './firebase.config';
+import { initializeApp } from 'firebase/app';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 const theme = {
@@ -22,12 +24,14 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const app = initializeApp(firebaseConfig);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <RouteSwitch />
+      <RouteSwitch firebaseApp={app} />
     </ThemeProvider>
   </React.StrictMode>
 );
