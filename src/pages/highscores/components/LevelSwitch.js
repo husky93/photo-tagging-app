@@ -17,16 +17,19 @@ const LevelSwitch = ({ handleLevelSwitch }) => {
             imgSrc={images[0]}
             text="Level 1"
             handleClick={handleLevelSwitch}
+            id="1"
           />
           <SwitchCard
             imgSrc={images[1]}
             text="Level 2"
             handleClick={handleLevelSwitch}
+            id="2"
           />
           <SwitchCard
             imgSrc={images[2]}
             text="Level 3"
             handleClick={handleLevelSwitch}
+            id="3"
           />
         </>
       ) : (

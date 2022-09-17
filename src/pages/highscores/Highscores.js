@@ -22,10 +22,11 @@ const Highscores = () => {
   const handleLevelSwitch = () => {
     console.log('Fetch new data from backend');
   };
+
   return (
     <main>
       <Header />
-      <LevelSwitch />
+      <LevelSwitch handleLevelSwitch={handleLevelSwitch} />
       <ScoreList data={data} />
     </main>
   );
