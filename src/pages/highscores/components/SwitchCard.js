@@ -27,9 +27,9 @@ const Caption = styled.figcaption`
   font-size: 18px;
 `;
 
-const SwitchCard = ({ imgSrc, text }) => {
+const SwitchCard = ({ imgSrc, text, handleClick }) => {
   return (
-    <Figure>
+    <Figure onClick={handleClick}>
       <Image src={imgSrc} alt={text} />
       <Caption>{text}</Caption>
     </Figure>
