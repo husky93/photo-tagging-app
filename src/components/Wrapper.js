@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   ${(props) => (props.justify ? `justify-content: ${props.justify};` : '')}
   ${(props) => (props.$wrap ? 'flex-wrap: wrap;' : '')}
   ${(props) => (props.gap ? `gap: ${props.gap}px;` : '')}
+  ${(props) => (props.mauto ? `margin: 0 auto; max-width: 1200px;` : '')}
 `;
 
 Wrapper.propTypes = {
