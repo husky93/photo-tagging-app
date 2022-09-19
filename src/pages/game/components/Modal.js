@@ -1,8 +1,10 @@
 import styled from 'styled-components';
+import { lighten } from 'polished';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Wrapper from '../../../components/Wrapper';
+import Button from '../../../components/Button';
 import Spinner from '../../../components/Spinner';
 
 const Overlay = styled(Wrapper)`
@@ -15,6 +17,7 @@ const Overlay = styled(Wrapper)`
 `;
 
 const StyledModal = styled(Wrapper)`
+  padding: 48px 24px;
   width: 500px;
   height: 500px;
   background-color: ${(props) => props.theme.bgColor};
@@ -24,6 +27,26 @@ const StyledModal = styled(Wrapper)`
   transform: translate(-50%, -50%);
   z-index: 999;
   border-radius: 8px;
+`;
+
+const Time = styled.strong`
+  font-weight: 700;
+  font-size: 30px;
+  color: ${(props) => props.theme.primaryColor};
+  text-shadow: 1px 1px 0px ${(props) => props.theme.secondaryColor};
+`;
+
+const Label = styled.label`
+  font-size: 14px;
+`;
+
+const Input = styled.input`
+  border: 3px ${(props) => lighten(0.1, props.theme.darkColor)} solid;
+  padding: 12px 22px;
+  border-radius: 8px;
+  color: ${(props) => props.theme.darkColor};
+  font-family: 'Noto Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 12px;
 `;
 
 const Modal = ({ time, submitScore }) => {
@@ -59,22 +82,32 @@ const Modal = ({ time, submitScore }) => {
         onClick={(e) => e.stopPropagation()}
         direction="column"
         align="center"
+        justify="start"
+        gap={16}
       >
         <h2>You completed this level in:</h2>
-        <strong>{time}</strong>
-        <label htmlFor="name">Type your name:</label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          value={inputValue}
-          onChange={handleInputChange}
-        />
-        {submitting ? (
-          <Spinner />
-        ) : (
-          <button onClick={handleSubmit}>Submit your score!</button>
-        )}
+        <Time>{time}</Time>
+        <Wrapper
+          direction="column"
+          align="center"
+          justify="space-around"
+          gap={16}
+        >
+          <Label htmlFor="name">Type your name:</Label>
+          <Input
+            type="text"
+            name="name"
+            id="name"
+            value={inputValue}
+            onChange={handleInputChange}
+            placeholder="Name..."
+          />
+          {submitting ? (
+            <Spinner />
+          ) : (
+            <Button onClick={handleSubmit}>Submit your score!</Button>
+          )}
+        </Wrapper>
       </StyledModal>
     </Overlay>
   );

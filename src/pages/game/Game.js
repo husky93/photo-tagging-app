@@ -29,6 +29,7 @@ const Image = styled.img`
 
 const Main = styled.main`
   position: relative;
+  min-width: 100%;
   width: min-content;
 `;
 
