@@ -156,7 +156,11 @@ const Game = ({ firebaseApp }) => {
     <Main>
       {isGameOver ? <Modal time={time} submitScore={setHighscore} /> : ''}
       <Header>
-        <Timer ref={timerRef} stop={isGameOver} start={image !== null} />
+        <Timer
+          ref={timerRef}
+          stop={isGameOver}
+          start={image !== null && params.id > 3}
+        />
         <Characters characters={characters} />
       </Header>
       {hovered ? (
