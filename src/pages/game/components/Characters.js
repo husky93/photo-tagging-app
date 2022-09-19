@@ -38,9 +38,18 @@ const Characters = ({ characters }) => {
     <div>
       {images !== null ? (
         <Wrapper direction="row" gap={12}>
-          <Image src={images[0]} found={isFound.waldo} alt="Waldo" />
-          <Image src={images[1]} found={isFound.odlaw} alt="Odlaw" />
-          <Image src={images[2]} found={isFound.wizard} alt="Wizard" />
+          <Wrapper direction="column">
+            <Image src={images[0]} found={isFound.waldo} alt="Waldo" />
+            <span>Waldo</span>
+          </Wrapper>
+          <Wrapper direction="column">
+            <Image src={images[1]} found={isFound.odlaw} alt="Odlaw" />
+            <span>Odlaw</span>
+          </Wrapper>
+          <Wrapper direction="column">
+            <Image src={images[2]} found={isFound.wizard} alt="Wizard" />
+            <span>Wizard</span>
+          </Wrapper>
         </Wrapper>
       ) : (
         ''

@@ -26,4 +26,16 @@ describe('Characters', () => {
     const img = screen.getByRole('img', { name: /odlaw/i });
     expect(img).toHaveStyle('opacity: 0.25');
   });
+  it('renders name for each character', async () => {
+    await act(async () =>
+      render(<Characters characters={mProps.characters} />)
+    );
+    const waldo = screen.getByText('Waldo');
+    const odlaw = screen.getByText('Odlaw');
+    const wizard = screen.getByText('Wizard');
+
+    expect(waldo).toBeInTheDocument();
+    expect(odlaw).toBeInTheDocument();
+    expect(wizard).toBeInTheDocument();
+  });
 });
