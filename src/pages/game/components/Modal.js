@@ -40,7 +40,7 @@ const Modal = ({ time, submitScore }) => {
     setInputValue(event.target.value);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async () => {
     if (inputValue) {
       setSubmitting(true);
       await submitScore(inputValue, time);
