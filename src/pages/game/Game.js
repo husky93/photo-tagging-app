@@ -69,8 +69,13 @@ const Game = ({ firebaseApp }) => {
   const setHighscore = async (name, time) => {
     const level = params.id;
     const levelRef = doc(db, 'scorelist', level);
+    const levelSnapshot = await getDoc(levelRef);
+    const array = levelSnapshot.data();
+    console.log(array);
+    array.users.push({ name, time });
+
     await updateDoc(levelRef, {
-      users: arrayUnion({ name, time }),
+      users: array.users,
     });
   };
 
