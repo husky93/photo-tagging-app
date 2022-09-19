@@ -7,6 +7,7 @@ const StyledTimer = styled.div`
   font-size: 28px;
   color: ${(props) => props.theme.primaryColor};
   text-shadow: 1px 1px 0px ${(props) => props.theme.secondaryColor};
+  margin: 0 auto;
 `;
 
 const Timer = React.forwardRef(({ stop, start }, ref) => {
