@@ -159,7 +159,7 @@ const Game = ({ firebaseApp }) => {
         <Timer
           ref={timerRef}
           stop={isGameOver}
-          start={image !== null && params.id > 3}
+          start={image !== null && params.id <= 3}
         />
         <Characters characters={characters} />
       </Header>

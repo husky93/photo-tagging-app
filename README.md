@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Where's Waldo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Photo-Tagging Application based on a classic children book series "Where's Waldo?". Find Waldo and his friends on an image and save your score in the database. This project was made with use of [React](https://github.com/facebook/react) along with [react-router](https://github.com/remix-run/react-router) and [testing-library](https://testing-library.com/) which was used for components testing. Tests were run with a help of [jest](https://jestjs.io/) JavaScript Testing Framework. [styled-components](https://styled-components.com/) was used for Application styling. [prop-types](https://github.com/facebook/prop-types) was used as a type checking tool. [Firebase](https://firebase.google.com/) was used for the backend.
 
-## Available Scripts
+**Live: [click here](https://husky93.github.io/photo-tagging-app)**
 
-In the project directory, you can run:
+## Features
+- Display Spinner in elements that require image load until all images on the page load (Custom hook, custom image loading module)
+- Level Picker component
+- Custom cursor while on Game page
+- Render a Game based on a link
+- Display all characters in Header - indicate if characters are found.
+- Display error when game link is wrong
+- Timer starts when image loads
+- On Click Popup character choice menu:
+  - Options rendered based on characters left to find
+  - Element providing feedback if the guess was wrong or right
+  - Each time you choose character connect to database and check if the coordinates are correct
+- Show Modal when all characters found:
+  - Shows your score
+  - Lets you input your Name
+  - Lets you submit your score to the database
+- High scores page:
+  - Pick a level for which high scores are shown
+  - Fetch each level high scores from database
+  - Display data from database
+  - Display max 8 elements per page
+  - Switch score pages UI
 
-### `npm start`
+ 
+<img src="https://github.com/husky93/storefront/blob/main/website.jpg?raw=true"/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Dependencies Used:
+- [React](https://github.com/facebook/react)
+- [React-DOM](https://github.com/facebook/react/tree/main/packages/react-dom)
+- [react-router-dom](https://github.com/remix-run/react-router)
+- [testing-library](https://github.com/testing-library)
+- [styled-components](https://styled-components.com/)
+- [polished](https://polished.js.org/docs/)
+- [prop-types](https://github.com/facebook/prop-types)
+- [Firebase](https://firebase.google.com/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Dev dependencies:
+- [create-react-app](https://github.com/facebook/create-react-app)
+- [jest](https://jestjs.io/)
