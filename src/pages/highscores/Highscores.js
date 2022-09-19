@@ -1,10 +1,11 @@
 import Header from '../../components/Header';
 import LevelSwitch from './components/LevelSwitch';
 import ScoreList from './components/ScoreList';
+import Wrapper from '../../components/Wrapper';
 import { getFirestore, getDoc, doc } from 'firebase/firestore/lite';
 import { useEffect, useState } from 'react';
 
-const Highscores = ({ firebaseApp, fetchData }) => {
+const Highscores = ({ firebaseApp }) => {
   const [data, setData] = useState([]);
   const [level, setLevel] = useState('1');
   const db = getFirestore(firebaseApp);
@@ -19,16 +20,16 @@ const Highscores = ({ firebaseApp, fetchData }) => {
   }, [level]);
 
   const handleLevelSwitch = (e) => {
-    console.log(e.target.dataset.id);
     setLevel(e.target.dataset.id);
-    console.log('Fetch new data from backend');
   };
 
   return (
     <main>
       <Header />
-      <LevelSwitch handleLevelSwitch={handleLevelSwitch} />
-      <ScoreList data={data} />
+      <Wrapper mauto direction="column">
+        <LevelSwitch handleLevelSwitch={handleLevelSwitch} active={level} />
+        <ScoreList data={data} />
+      </Wrapper>
     </main>
   );
 };
