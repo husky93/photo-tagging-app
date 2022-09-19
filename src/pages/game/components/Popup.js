@@ -1,15 +1,37 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { darken } from 'polished';
 
 const StyledPopup = styled.div`
   cursor: pointer;
   position: absolute;
-  min-width: 150px;
-  height: 150px;
+  min-width: 125px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 12px 1px rgba(66, 68, 90, 0.4);
   background-color: #fff;
   left: ${(props) => props.mouseX}px;
   top: ${(props) => props.mouseY}px;
   z-index: 600;
+`;
+
+const CharacterSelection = styled.div`
+  padding: 4px;
+  text-align: center;
+  font-size: 15px;
+  border: 3px transparent solid;
+  &:hover {
+    background-color: ${(props) => props.theme.lightColor};
+    border: 3px ${(props) => darken(0.02, props.theme.lightColor)} solid;
+    color: ${(props) => props.theme.primaryColor};
+  }
+  &:first-of-type {
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+  }
+  &:last-of-type {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
 `;
 
 const Popup = ({ mouseX, mouseY, characters, handleClick }) => {
@@ -21,9 +43,9 @@ const Popup = ({ mouseX, mouseY, characters, handleClick }) => {
       onClick={handleClick}
     >
       {characters.map((character) => (
-        <div data-name={character.name} key={character.name}>
+        <CharacterSelection data-name={character.name} key={character.name}>
           {character.name}
-        </div>
+        </CharacterSelection>
       ))}
     </StyledPopup>
   );
