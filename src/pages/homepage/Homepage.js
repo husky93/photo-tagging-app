@@ -21,9 +21,18 @@ const StyledWrapper = styled(Wrapper)`
   }
 `;
 
+const CenteredWrapper = styled(Wrapper)`
+  justify-content: space-around;
+  @media (min-width: 1200px) {
+    justify-content: space-between;
+  }
+`;
+
 const Heading = styled.h2`
   font-size: ${(props) => props.size}px;
   font-weight: 700;
+  margin-top: 12px;
+  margin-bottom: 36px;
 `;
 
 const StyledLink = styled(Link)`
@@ -48,7 +57,7 @@ function Homepage() {
       <Section className="content" aria-label="Content">
         <Heading size="24">Choose a level:</Heading>
         {images !== null ? (
-          <Wrapper direction="row" justify="space-around" gap={36} mauto $wrap>
+          <CenteredWrapper direction="row" align="center" gap={36} mauto $wrap>
             {images.map((imgSrc, index) => (
               <LevelPicker
                 imgSrc={imgSrc}
@@ -57,7 +66,7 @@ function Homepage() {
                 key={`homepage-card-${index}`}
               />
             ))}
-          </Wrapper>
+          </CenteredWrapper>
         ) : (
           <Wrapper direction="row" justify="center" gap={36} mauto $wrap>
             <Spinner />
