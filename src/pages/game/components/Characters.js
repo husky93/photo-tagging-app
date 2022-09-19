@@ -11,6 +11,12 @@ const Image = styled.img`
   height: 50px;
 `;
 
+const CharName = styled.span`
+  font-size: 14px;
+  text-align: center;
+  font-weight: 600;
+`;
+
 const Characters = ({ characters }) => {
   const images = useImageLoader(['waldo.png', 'odlaw.png', 'wizard.png']);
   const [isFound, setIsFound] = useState({
@@ -40,15 +46,15 @@ const Characters = ({ characters }) => {
         <Wrapper direction="row" gap={12}>
           <Wrapper direction="column">
             <Image src={images[0]} found={isFound.waldo} alt="Waldo" />
-            <span>Waldo</span>
+            <CharName>Waldo</CharName>
           </Wrapper>
           <Wrapper direction="column">
             <Image src={images[1]} found={isFound.odlaw} alt="Odlaw" />
-            <span>Odlaw</span>
+            <CharName>Odlaw</CharName>
           </Wrapper>
           <Wrapper direction="column">
             <Image src={images[2]} found={isFound.wizard} alt="Wizard" />
-            <span>Wizard</span>
+            <CharName>Wizard</CharName>
           </Wrapper>
         </Wrapper>
       ) : (

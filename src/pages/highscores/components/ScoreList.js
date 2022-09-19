@@ -59,7 +59,7 @@ const ScoreList = ({ data }) => {
   };
 
   return (
-    <StyledWrapper direction="column" mauto>
+    <StyledWrapper direction="column">
       <List>
         {currentPageData.map((item, index) => (
           <ScoreItem

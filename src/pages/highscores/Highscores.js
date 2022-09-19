@@ -33,7 +33,7 @@ const Highscores = ({ firebaseApp }) => {
   return (
     <main>
       <Header />
-      <StyledWrapper direction="column" align="center">
+      <StyledWrapper direction="column" align="center" mauto>
         <LevelSwitch handleLevelSwitch={handleLevelSwitch} active={level} />
         <ScoreList data={data} />
       </StyledWrapper>

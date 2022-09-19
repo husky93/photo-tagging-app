@@ -25,9 +25,9 @@ const Logo = styled.h1`
 const Header = ({ children }) => {
   return (
     <StyledHeader>
-      <Wrapper direction="row" align="center" mauto>
+      <Wrapper direction="row" align="center" justify="center" mauto>
         <StyledLink to="/">
-          <Logo>Where's Waldo</Logo>
+          <Logo>Where's Waldo?</Logo>
         </StyledLink>
         {children ? children : ''}
       </Wrapper>
