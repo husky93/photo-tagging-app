@@ -21,7 +21,7 @@ describe('Header', () => {
         <Header />
       </Router>
     );
-    const logo = screen.getByRole('heading', { name: /where's waldo/i });
+    const logo = screen.getByRole('heading');
     expect(logo).toBeInTheDocument();
   });
   it('logo on click redirects to homepage', () => {
@@ -31,7 +31,7 @@ describe('Header', () => {
         <Header />
       </Router>
     );
-    const logo = screen.getByRole('heading', { name: /where's waldo/i });
+    const logo = screen.getByRole('heading');
     userEvent.click(logo);
     expect(history.location.pathname).toBe('/');
   });
