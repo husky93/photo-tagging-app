@@ -4,6 +4,7 @@ import '@testing-library/jest-dom/';
 
 const mProps = {
   stop: false,
+  start: true,
 };
 
 describe('Timer', () => {
@@ -11,12 +12,12 @@ describe('Timer', () => {
     jest.useFakeTimers();
   });
   it('renders a timer', () => {
-    render(<Timer stop={mProps.stop} />);
+    render(<Timer stop={mProps.stop} start={mProps.start} />);
     const timer = screen.getByText('0:00');
     expect(timer).toBeInTheDocument();
   });
   it('works corerctly', async () => {
-    render(<Timer stop={mProps.stop} />);
+    render(<Timer stop={mProps.stop} start={mProps.start} />);
     const timer = screen.getByText('0:00');
     act(() => {
       jest.advanceTimersByTime(1000);
@@ -24,7 +25,7 @@ describe('Timer', () => {
     expect(timer.textContent).toBe('0:01');
   });
   it('stops timer when stop is true', async () => {
-    render(<Timer stop={true} />);
+    render(<Timer stop={true} start={mProps.start} />);
     const timer = screen.getByText('0:00');
     act(() => {
       jest.advanceTimersByTime(1000);

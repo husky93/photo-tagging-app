@@ -9,7 +9,7 @@ const StyledTimer = styled.div`
   text-shadow: 1px 1px 0px ${(props) => props.theme.secondaryColor};
 `;
 
-const Timer = React.forwardRef(({ stop }, ref) => {
+const Timer = React.forwardRef(({ stop, start }, ref) => {
   const [timer, setTimer] = useState('0:00');
   useImperativeHandle(
     ref,
@@ -23,7 +23,7 @@ const Timer = React.forwardRef(({ stop }, ref) => {
   let intervalId;
   useEffect(() => {
     const date = new Date();
-    if (!stop) {
+    if (!stop && start) {
       intervalId = setInterval(() => {
         const newDate = new Date();
         const timeDiff = Math.round((newDate - date) / 1000);
@@ -33,7 +33,7 @@ const Timer = React.forwardRef(({ stop }, ref) => {
       }, 1000);
     }
     return () => clearInterval(intervalId);
-  }, [stop]);
+  }, [stop, , start]);
   return <StyledTimer>{timer}</StyledTimer>;
 });
 
