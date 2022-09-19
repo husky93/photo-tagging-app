@@ -28,7 +28,7 @@ Photo-Tagging Application based on a classic children book series "Where's Waldo
   - Switch score pages UI
 
  
-<img src="https://github.com/husky93/storefront/blob/main/website.jpg?raw=true"/>
+<img src="https://github.com/husky93/photo-tagging-app/blob/main/website.jpg?raw=true"/>
 
 ### Dependencies Used:
 - [React](https://github.com/facebook/react)
