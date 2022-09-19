@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/photo-tagging-app/static/js/main.571696ef.js",
+    "main.js": "/photo-tagging-app/static/js/main.907ec182.js",
     "static/js/153.38ecbd05.chunk.js": "/photo-tagging-app/static/js/153.38ecbd05.chunk.js",
     "static/js/7.fa3b8b45.chunk.js": "/photo-tagging-app/static/js/7.fa3b8b45.chunk.js",
     "static/js/621.123c9777.chunk.js": "/photo-tagging-app/static/js/621.123c9777.chunk.js",
@@ -22,9 +22,9 @@
     "static/media/wizard.png": "/photo-tagging-app/static/media/wizard.2166d0223abaf6c60aa2.png",
     "index.html": "/photo-tagging-app/index.html",
     "static/media/arrow-right.svg": "/photo-tagging-app/static/media/arrow-right.f030f9db04711643a8b421bb60f13018.svg",
-    "main.571696ef.js.map": "/photo-tagging-app/static/js/main.571696ef.js.map"
+    "main.907ec182.js.map": "/photo-tagging-app/static/js/main.907ec182.js.map"
   },
   "entrypoints": [
-    "static/js/main.571696ef.js"
+    "static/js/main.907ec182.js"
   ]
 }
