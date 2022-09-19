@@ -33,6 +33,10 @@ const Main = styled.main`
   width: min-content;
 `;
 
+const SpinnerWrapper = styled(Wrapper)`
+  flex: 1;
+`;
+
 const Game = ({ firebaseApp }) => {
   const [image, setImage] = useState(null);
   const [hovered, setHovered] = useState(false);
@@ -146,9 +150,9 @@ const Game = ({ firebaseApp }) => {
       );
     else
       return (
-        <Wrapper direction="row" justify="center" align="center">
+        <SpinnerWrapper direction="row" justify="center" align="center">
           <Spinner />
-        </Wrapper>
+        </SpinnerWrapper>
       );
   };
 
