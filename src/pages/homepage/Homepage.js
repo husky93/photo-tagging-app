@@ -55,7 +55,6 @@ function Homepage() {
     <main className="homepage">
       <Header />
       <Section className="content" aria-label="Content">
-        <Heading size="24">Choose a level:</Heading>
         {images !== null ? (
           <CenteredWrapper direction="row" align="center" gap={36} mauto $wrap>
             {images.map((imgSrc, index) => (
