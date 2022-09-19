@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const animate = keyframes`
 0% {
   display: block;
-  opacity: 0;
+  opacity: 0.7;
 }
 50%{
   opacity: 1;
@@ -19,15 +19,18 @@ const animate = keyframes`
 const Feedback = styled.div`
   display: block;
   position: absolute;
-  color: ${(props) => (props.$name ? 'green' : 'red')};
-  min-width: 150px;
-  height: 150px;
+  color: ${(props) => (props.$name ? props.theme.secondaryColor : 'red')};
+  min-width: 125px;
+  padding: 12px;
+  border-radius: 8px;
   background-color: #fff;
   left: ${(props) => props.mouseX}px;
   top: ${(props) => props.mouseY}px;
   transition: all 0.25s ease;
   animation: ${animate} 2s;
   z-index: 550;
+  font-weight: 600;
+  box-shadow: 2px 2px 12px 1px rgba(66, 68, 90, 0.4);
 `;
 
 const ChoiceFeedback = ({ mouseX, mouseY, $name }) => {
