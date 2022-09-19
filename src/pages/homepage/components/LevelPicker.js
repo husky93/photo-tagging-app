@@ -1,7 +1,8 @@
 import { useImageLoader } from '../../../hooks/hooks';
-import { Link } from 'react-router-dom';
+import { darken } from 'polished';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Wrapper from '../../../components/Wrapper';
 
 const Figure = styled.figure`
@@ -11,7 +12,7 @@ const Figure = styled.figure`
   width: 320px;
   background-color: ${(props) => props.theme.lightColor};
   border-radius: 8px;
-  box-shadow: 1px 1px 2px 0px rgba(66, 68, 90, 0.4);
+  border: 3px ${(props) => darken(0.02, props.theme.lightColor)} solid;
   transition: box-shadow 0.25s cubic-bezier(0.23, 1, 0.32, 1);
   &:hover {
     box-shadow: 2px 2px 12px 1px rgba(66, 68, 90, 0.4);
@@ -22,6 +23,8 @@ const Image = styled.img`
   width: 100%;
   min-height: 320px;
   object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 `;
 
 const Caption = styled.figcaption`

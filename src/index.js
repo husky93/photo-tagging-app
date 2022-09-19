@@ -7,8 +7,8 @@ import { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 const theme = {
   bgColor: '#F9F8F8',
-  primaryColor: '#71B48D',
-  secondaryColor: '#DE9151',
+  primaryColor: '#DE9151',
+  secondaryColor: '#71B48D',
   darkColor: '#3E505B',
   lightColor: '#F5F0F6',
 };
@@ -19,8 +19,19 @@ const GlobalStyle = createGlobalStyle`
   }
   
   body {
+    color: ${(props) => props.theme.darkColor};
     margin: 0;
     background-color: ${(props) => props.theme.bgColor};
+    font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  }
+  main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  section {
+    flex:1 ;
   }
 `;
 
