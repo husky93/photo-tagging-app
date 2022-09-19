@@ -8,6 +8,10 @@ const mProps = {
   time: '0:05',
 };
 
+jest.mock('polished', () => ({
+  darken: () => '#fff',
+}));
+
 describe('ScoreItem', () => {
   it('renders a number', () => {
     render(
