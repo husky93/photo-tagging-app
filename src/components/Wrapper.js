@@ -40,6 +40,7 @@ Wrapper.propTypes = {
   ]),
   $wrap: PropTypes.bool,
   gap: PropTypes.number,
+  mauto: PropTypes.bool,
 };
 
 export default Wrapper;

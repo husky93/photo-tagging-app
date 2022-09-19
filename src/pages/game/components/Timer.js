@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const StyledTimer = styled.div`
   font-weight: 700;
-  font-size: 30px;
+  font-size: 28px;
   color: ${(props) => props.theme.primaryColor};
   text-shadow: 1px 1px 0px ${(props) => props.theme.secondaryColor};
 `;

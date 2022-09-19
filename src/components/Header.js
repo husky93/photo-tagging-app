@@ -19,6 +19,7 @@ const StyledLink = styled(Link)`
 const Logo = styled.h1`
   color: ${(props) => props.theme.primaryColor};
   font-family: 'Abril Fatface', cursive;
+  text-shadow: 1px 1px 0px ${(props) => props.theme.secondaryColor};
 `;
 
 const Header = ({ children }) => {

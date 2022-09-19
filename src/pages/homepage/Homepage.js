@@ -80,7 +80,7 @@ function Homepage() {
           mauto
           $wrap
         >
-          <h3>Have a look at the High Scores!</h3>
+          <h3>Have a look at the Top Scores!</h3>
           <StyledLink to="highscores">
             <Button>
               Go to Leaderboards <ArrowRight />

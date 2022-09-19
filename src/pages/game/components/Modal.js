@@ -41,12 +41,19 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
-  border: 3px ${(props) => lighten(0.1, props.theme.darkColor)} solid;
+  border: 2px ${(props) => lighten(0.1, props.theme.primaryColor)} solid;
+  background-color: ${(props) => props.theme.lightColor};
   padding: 12px 22px;
   border-radius: 8px;
   color: ${(props) => props.theme.darkColor};
   font-family: 'Noto Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin-bottom: 12px;
+  transition: all 0.15s ease;
+
+  &:focus {
+    outline: none;
+    border: 2px ${(props) => lighten(0.1, props.theme.secondaryColor)} solid;
+  }
 `;
 
 const Modal = ({ time, submitScore }) => {
