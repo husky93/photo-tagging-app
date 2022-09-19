@@ -19,6 +19,7 @@ const CharacterSelection = styled.div`
   text-align: center;
   font-size: 15px;
   border: 3px transparent solid;
+  transition: all 0.15s ease;
   &:hover {
     background-color: ${(props) => props.theme.lightColor};
     border: 3px ${(props) => darken(0.02, props.theme.lightColor)} solid;
