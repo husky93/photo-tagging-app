@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkphoto_tagging_app=self.webpackChunkphoto_tagging_app||[]).push([[813],{531:function(a,p,t){a.exports=t.p+"static/media/waldo.ca75424f3bb84a2bab5d.png"}}]);

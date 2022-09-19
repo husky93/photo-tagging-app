@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkphoto_tagging_app=self.webpackChunkphoto_tagging_app||[]).push([[827],{827:function(p,a,t){p.exports=t.p+"static/media/odlaw.c4cf17c4a90b6d99a215.png"}}]);

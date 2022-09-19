@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkphoto_tagging_app=self.webpackChunkphoto_tagging_app||[]).push([[621],{621:function(e,p,t){e.exports=t.p+"static/media/level-2-big.e5c7088be5de57d04fcf.jpg"}}]);

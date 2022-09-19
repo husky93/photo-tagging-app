@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkphoto_tagging_app=self.webpackChunkphoto_tagging_app||[]).push([[769],{769:function(a,p,t){a.exports=t.p+"static/media/wizard.2166d0223abaf6c60aa2.png"}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkphoto_tagging_app=self.webpackChunkphoto_tagging_app||[]).push([[153],{153:function(p,t,a){p.exports=a.p+"static/media/arrow-right.f030f9db04711643a8b4.svg"}}]);
