@@ -1,5 +1,13 @@
 import React, { useState, useEffect, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const StyledTimer = styled.div`
+  font-weight: 700;
+  font-size: 30px;
+  color: ${(props) => props.theme.primaryColor};
+  text-shadow: 2px 0px 0px ${(props) => props.theme.secondaryColor};
+`;
 
 const Timer = React.forwardRef(({ stop }, ref) => {
   const [timer, setTimer] = useState('0:00');
@@ -26,7 +34,7 @@ const Timer = React.forwardRef(({ stop }, ref) => {
     }
     return () => clearInterval(intervalId);
   }, [stop]);
-  return <div>{timer}</div>;
+  return <StyledTimer>{timer}</StyledTimer>;
 });
 
 Timer.propTypes = {
