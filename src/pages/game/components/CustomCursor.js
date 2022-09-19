@@ -11,10 +11,11 @@ const Cursor = styled.div.attrs((props) => ({
   position: absolute;
   width: 50px;
   height: 50px;
-  background: rgba(1, 1, 1, 0.5);
+  background: rgba(1, 1, 1, 0.55);
   z-index: 500;
   pointer-events: none;
   border-radius: 50%;
+  border: 2px ${(props) => props.theme.primaryColor} dashed;
 `;
 
 const CustomCursor = ({ mouseX, mouseY }) => {
