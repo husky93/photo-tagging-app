@@ -11,7 +11,7 @@ const LevelSwitch = ({ active, handleLevelSwitch }) => {
     'level-three-sm.jpg',
   ]);
   return (
-    <Wrapper direction="row" gap={24}>
+    <Wrapper direction="row" justify="space-around" $wrap gap={24}>
       {images !== null ? (
         <>
           <SwitchCard

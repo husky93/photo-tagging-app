@@ -9,16 +9,26 @@ import { useState, useEffect } from 'react';
 const List = styled.ul`
   list-style: none;
   padding: 0;
-  margin: 0;
-  margin-top: 64px;
+  margin: 64px 12px;
+  @media (min-width: 1200px) {
+    margin: 0;
+    margin-top: 64px;
+  }
 `;
 
 const ScoreListUi = styled(Wrapper)`
-  margin-top: 24px;
+  margin: 24px 12px;
+  @media (min-width: 1200px) {
+    margin: 24px 0;
+  }
 `;
 
 const ButtonRight = styled(Button)`
   margin-left: auto;
+`;
+
+const StyledWrapper = styled(Wrapper)`
+  width: 100%;
 `;
 
 const ScoreList = ({ data }) => {
@@ -49,7 +59,7 @@ const ScoreList = ({ data }) => {
   };
 
   return (
-    <Wrapper direction="column">
+    <StyledWrapper direction="column" mauto>
       <List>
         {currentPageData.map((item, index) => (
           <ScoreItem
@@ -72,7 +82,7 @@ const ScoreList = ({ data }) => {
           ''
         )}
       </ScoreListUi>
-    </Wrapper>
+    </StyledWrapper>
   );
 };
 

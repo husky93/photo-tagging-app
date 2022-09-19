@@ -1,9 +1,16 @@
+import { getFirestore, getDoc, doc } from 'firebase/firestore/lite';
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 import LevelSwitch from './components/LevelSwitch';
 import ScoreList from './components/ScoreList';
 import Wrapper from '../../components/Wrapper';
-import { getFirestore, getDoc, doc } from 'firebase/firestore/lite';
-import { useEffect, useState } from 'react';
+
+const StyledWrapper = styled(Wrapper)`
+  margin-top: 36px;
+  flex: 1;
+`;
 
 const Highscores = ({ firebaseApp }) => {
   const [data, setData] = useState([]);
@@ -26,10 +33,11 @@ const Highscores = ({ firebaseApp }) => {
   return (
     <main>
       <Header />
-      <Wrapper mauto direction="column">
+      <StyledWrapper direction="column" align="center">
         <LevelSwitch handleLevelSwitch={handleLevelSwitch} active={level} />
         <ScoreList data={data} />
-      </Wrapper>
+      </StyledWrapper>
+      <Footer />
     </main>
   );
 };
