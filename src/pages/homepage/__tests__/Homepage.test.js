@@ -14,6 +14,10 @@ jest.mock('../components/LevelPicker', () => () => {
   return <div data-testid="levelpicker"></div>;
 });
 
+jest.mock('polished', () => ({
+  darken: () => '#fff',
+}));
+
 const renderWithRouter = (ui, { route = '/' } = {}) => {
   window.history.pushState({}, 'Test page', route);
   return {

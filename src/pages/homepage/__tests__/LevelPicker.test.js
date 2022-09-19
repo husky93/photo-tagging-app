@@ -5,6 +5,10 @@ import '@testing-library/jest-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import imagesLoader from '../../../modules/imagesLoader';
 
+jest.mock('polished', () => ({
+  darken: () => '#fff',
+}));
+
 describe('LevelPicker', () => {
   it('renders', () => {
     render(

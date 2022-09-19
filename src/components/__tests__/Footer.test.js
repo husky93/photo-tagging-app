@@ -10,6 +10,10 @@ const renderWithRouter = (ui, { route = '/' } = {}) => {
   };
 };
 
+jest.mock('polished', () => ({
+  darken: () => '#fff',
+}));
+
 describe('Header', () => {
   it('renders', () => {
     renderWithRouter(<Footer />);

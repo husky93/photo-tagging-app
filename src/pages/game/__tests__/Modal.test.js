@@ -9,6 +9,11 @@ const mProps = {
   submitScore: jest.fn(() => Promise.resolve()),
 };
 
+jest.mock('polished', () => ({
+  darken: () => '#fff',
+  lighten: () => '#fff',
+}));
+
 const renderWithRouter = (ui, { route = '/' } = {}) => {
   window.history.pushState({}, 'Test page', route);
   return {

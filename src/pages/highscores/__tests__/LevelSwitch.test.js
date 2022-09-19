@@ -9,6 +9,7 @@ jest.mock('../components/SwitchCard', () => () => (
 
 const mProps = {
   handleLevelSwitch: jest.fn(),
+  active: '1',
 };
 
 beforeEach(() => {
@@ -17,7 +18,12 @@ beforeEach(() => {
 
 describe('LevelSwitch', () => {
   it('renders a a Spinner initially', () => {
-    render(<LevelSwitch handleLevelSwitch={mProps.handleLevelSwitch} />);
+    render(
+      <LevelSwitch
+        active={mProps.active}
+        handleLevelSwitch={mProps.handleLevelSwitch}
+      />
+    );
     const spinner = screen.getByTitle('Loading');
     expect(spinner).toBeInTheDocument();
   });
@@ -25,7 +31,12 @@ describe('LevelSwitch', () => {
     const imagesLoaderGetSpy = jest
       .spyOn(imageLoaderHook, 'useImageLoader')
       .mockResolvedValueOnce(['test.jpg', 'test.jpg', 'test.jpg']);
-    render(<LevelSwitch handleLevelSwitch={mProps.handleLevelSwitch} />);
+    render(
+      <LevelSwitch
+        active={mProps.active}
+        handleLevelSwitch={mProps.handleLevelSwitch}
+      />
+    );
     const cards = screen.queryAllByTestId('switchcard');
     expect(cards).toHaveLength(3);
   });

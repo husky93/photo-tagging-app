@@ -5,6 +5,10 @@ import userEvent from '@testing-library/user-event';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 
+jest.mock('polished', () => ({
+  darken: () => '#fff',
+}));
+
 describe('Header', () => {
   it('renders', () => {
     render(

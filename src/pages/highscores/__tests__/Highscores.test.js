@@ -6,6 +6,9 @@ import '@testing-library/jest-dom/';
 
 jest.mock('firebase/app');
 jest.mock('firebase/firestore/lite');
+jest.mock('polished', () => ({
+  darken: () => '#fff',
+}));
 jest.spyOn(React, 'useEffect').mockImplementationOnce((cb) => cb()());
 
 const renderWithRouter = (ui, { route = '/highscores' } = {}) => {
