@@ -34,8 +34,19 @@ const StyledWrapper = styled(Wrapper)`
 const ScoreList = ({ data }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentPageData, setCurrentPageData] = useState([]);
-  const sortedData = data.sort(compareTimes);
+  const [sortedData, setSortedData] = useState([]);
   const maxIndex = sortedData.length - 1;
+
+  useEffect(() => {
+    setCurrentIndex(0);
+    const newData = [
+      ...data.map((obj) => {
+        return { ...obj };
+      }),
+    ];
+    newData.sort(compareTimes);
+    setSortedData(newData);
+  }, [data, setSortedData]);
 
   useEffect(() => {
     const dataLength = sortedData.length;
@@ -45,10 +56,6 @@ const ScoreList = ({ data }) => {
 
     setCurrentPageData(slicedData);
   }, [currentIndex, sortedData]);
-
-  useEffect(() => {
-    setCurrentIndex(0);
-  }, [data]);
 
   const handleNextPage = () => {
     setCurrentIndex((prevState) => prevState + 8);

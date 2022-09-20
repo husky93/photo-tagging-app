@@ -6,10 +6,10 @@ const compareTimes = (a, b) => {
   const secondsA = parseInt(timeA[1], 10);
   const secondsB = parseInt(timeB[1], 10);
 
-  if (minutesB > minutesA) return -1;
-  if (secondsB > secondsA) return -1;
-  if (minutesB === minutesA && secondsB === secondsA) return 0;
-  return 1;
+  if (minutesB === minutesA) {
+    return secondsA - secondsB;
+  }
+  return minutesA - minutesB;
 };
 
 export default compareTimes;
