@@ -5,13 +5,13 @@ Photo-Tagging Application based on a classic children book series "Where's Waldo
 **Live: [click here](https://husky93.github.io/photo-tagging-app)**
 
 ## Features
-- Display Spinner in elements that require image load until all images on the page load (Custom hook, custom image loading module)
+- Display Spinner in elements that require image load until all images on the page load (Custom hook)
 - Level Picker component
 - Custom cursor while on Game page
-- Render a Game based on a link
+- Render a Game based on an URL
 - Display all characters in Header - indicate if characters are found.
 - Display error when game link is wrong
-- Timer starts when image loads
+- Start timer when image loads
 - On Click Popup character choice menu:
   - Options rendered based on characters left to find
   - Element providing feedback if the guess was wrong or right
