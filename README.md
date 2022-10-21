@@ -2,7 +2,7 @@
 
 Photo-Tagging Application based on a classic children book series "Where's Waldo?". Find Waldo and his friends on an image and save your score in the database. This project was made with use of [React](https://github.com/facebook/react) along with [react-router](https://github.com/remix-run/react-router) and [testing-library](https://testing-library.com/) which was used for components testing. Tests were run with a help of [jest](https://jestjs.io/) JavaScript Testing Framework. [styled-components](https://styled-components.com/) was used for Application styling. [prop-types](https://github.com/facebook/prop-types) was used as a type checking tool. [Firebase](https://firebase.google.com/) was used for the backend.
 
-**Live: [click here](https://husky93.github.io/photo-tagging-app)**
+### Live: [click here](https://husky93.github.io/photo-tagging-app)
 
 ## Features
 - Display Spinner in elements that require image load until all images on the page load (Custom hook)
